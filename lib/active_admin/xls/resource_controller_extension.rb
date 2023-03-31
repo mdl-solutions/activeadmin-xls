@@ -13,7 +13,7 @@ module ActiveAdmin
         super do |format|
           format.xls do
             xls = active_admin_config.xls_builder.serialize(xls_collection,
-                                                            view_context)
+                                                            view_context, params)
             send_data(xls,
                       filename: xls_filename,
                       type: Mime::Type.lookup_by_extension(:xls))

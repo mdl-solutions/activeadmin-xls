@@ -63,7 +63,7 @@ module ActiveAdmin
       # @see Builder
       # @see https://github.com/zdavatz/spreadsheet/blob/master/lib/spreadsheet/format.rb
       def xls(options = {}, &block)
-        config.xls_builder = ActiveAdmin::Xls::Builder.new(
+        config.xls_builder = ActiveAdmin::Xls::DynamicBuilder.new(
           config.resource_class,
           options,
           &block

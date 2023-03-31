@@ -29,14 +29,19 @@ module ActiveAdmin
       #
       # @see DSL
       # @see https://github.com/zdavatz/spreadsheet/blob/master/lib/spreadsheet/format.rb
-      def initialize(resource_class, options = {}, &block)
+      def initialize(resource_class, options = {}, params, &block)
         @skip_header = false
         @resource_class = resource_class
         @columns = []
         @columns_loaded = false
         @column_updates = []
         parse_options options
+        @params = params
         instance_eval(&block) if block_given?
+      end
+
+      def params
+        @params
       end
 
       # The default header style
